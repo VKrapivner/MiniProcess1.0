@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,8 +12,11 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movement;//Storing movement input
 
-    // Start is called before the first frame update
-    void Start()
+	public float jumpForce = 5.0f;
+    private bool isGrounded;
+
+	// Start is called before the first frame update
+	void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -20,7 +24,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
+
+		float moveX = Input.GetAxisRaw("Horizontal");
 
         movement = new Vector2(moveX, 0);//(x,0)
 
@@ -33,10 +38,33 @@ public class PlayerMovement : MonoBehaviour
 			//transform.localScale = new Vector3(-1, 1, 1);//Facing left
 			transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
+		if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
+		{
+			Debug.Log("Enter if statement");
+			rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+		}
 	}
 
 	private void FixedUpdate()
 	{
         rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if(collision.CompareTag("Ground"))
+        {
+            isGrounded = true;
+			Debug.Log("Player is grounded");
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if(collision.CompareTag("Ground"))
+		{
+			isGrounded = false;
+			Debug.Log("Player is not grounded");
+		}
 	}
 }
