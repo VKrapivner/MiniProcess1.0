@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;//Storing movement input
 
 	public float jumpForce = 5.0f;
-    private bool isGrounded;
+    private bool isGrounded = true;
 
 	// Start is called before the first frame update
 	void Start()
@@ -29,10 +29,10 @@ public class PlayerMovement : MonoBehaviour
 		movement = new Vector2(moveX, 0);//(x,0)
         animator.SetFloat("SpeedParam", Mathf.Abs(movement.x));//Trigger animation
 
-        if (moveX > 0)
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);  
-        else if (moveX < 0)
-			transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        if (moveX != 0)
+            transform.localScale = new Vector3(moveX, transform.localScale.y, transform.localScale.z);  
+   //     else if (moveX < 0)
+			//transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
 		Debug.Log("isGrounded " + isGrounded);
 
@@ -44,13 +44,14 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetBool("isJumping", true);
 			animator.SetBool("isGrounded", false);
 		}
+		rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y); // Update horizontal velocity, but keep vertical velocity
 
 	}
 
 	private void FixedUpdate()
 	{
 
-		rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y); // Update horizontal velocity, but keep vertical velocity
+		//rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y); // Update horizontal velocity, but keep vertical velocity
 
 	}
 
