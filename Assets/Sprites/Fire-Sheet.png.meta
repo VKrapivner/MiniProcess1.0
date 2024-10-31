@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b0ac9afc28e29149878b87381f95d09
+guid: a34615cd74cbbd74cb58f845c15b57f7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ekorresprite-sheet 1_0
+      name: Fire-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 337798a042d0050438015bde8df3ec2a
-      internalID: -1456359332
+      spriteID: 40a42f4d25ca6ba45aded1659b954fca
+      internalID: 1935700790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ekorresprite-sheet 1_1
+      name: Fire-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 256
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0b5b1e2762332540884cb08b0a2695d
-      internalID: -1035258379
+      spriteID: 23a661077cbcc004d8dda214743fa5ee
+      internalID: 627002579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ekorresprite-sheet 1_2
+      name: Fire-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 512
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f05f3c094f8a3074886b6a94a025fc35
-      internalID: 914440941
+      spriteID: 1965bdf702b57d14eb1513e447c4d59f
+      internalID: 421343823
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ekorresprite-sheet 1_3
+      name: Fire-Sheet_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 768
         y: 0
-        width: 64
-        height: 64
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,8 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2222de36d7d55ec4195d058e851c65c5
-      internalID: -1826466598
+      spriteID: f0f5f3850634be94c8bff98665d01e07
+      internalID: 1645717401
       vertices: []
       indices: 
       edges: []
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ekorresprite-sheet 1_0: -1456359332
-      ekorresprite-sheet 1_1: -1035258379
-      ekorresprite-sheet 1_2: 914440941
-      ekorresprite-sheet 1_3: -1826466598
+      Fire-Sheet_0: 1935700790
+      Fire-Sheet_1: 627002579
+      Fire-Sheet_2: 421343823
+      Fire-Sheet_3: 1645717401
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
