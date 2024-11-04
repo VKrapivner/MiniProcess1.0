@@ -4,61 +4,35 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectInteraction : MonoBehaviour
+public class NPCInteraction : MonoBehaviour
 {
-    public GameObject speechBubble;
+	public GameObject speechBubble;
 	public TextMeshProUGUI speechText;
 	public string[] interactionTexts;
 	public Button speechBubbleButton;
 
 	public int currentTextIndex = 0;
 
-	public Collider2D npcCollider;
-
 	// Start is called before the first frame update
 	void Start()
-    {
-        speechBubble.SetActive(false); //Hides initially
+	{
+		speechBubble.SetActive(false); //Hides initially
 
 		speechBubbleButton.onClick.AddListener(OnSpeechBubbleClick);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-	private void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (collision.CompareTag("Player"))
-		{
-			Debug.Log("Interaction triggered with: " + gameObject.name);
-
-			currentTextIndex = 0;
-
-			speechText.text = interactionTexts[currentTextIndex]; //Update interaction text
-
-			speechBubble.SetActive(true); // Show speech bubble
-		}
 	}
 
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		Debug.Log("Enters OnCollision");
-		if (collision.gameObject.CompareTag("Player"))
+		if (collision.gameObject.CompareTag("NPC"))
 		{
 			Debug.Log("Collision detected with NPC");
 			DisplaySpeechBubble();
-		}
-	}
-
-	// Trigger when the player leaves the interaction zone
-	private void OnTriggerExit2D(Collider2D collision)
-	{
-		if (collision.CompareTag("Player"))
-		{
-			speechBubble.SetActive(false); // Hide speech bubble
 		}
 	}
 
@@ -86,10 +60,8 @@ public class ObjectInteraction : MonoBehaviour
 		currentTextIndex = 0;
 		speechText.text = interactionTexts[currentTextIndex];
 		speechBubble.SetActive(true);
-		npcCollider.isTrigger = true;
 
 
 	}
-
 
 }
