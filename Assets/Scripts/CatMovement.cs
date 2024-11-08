@@ -5,7 +5,7 @@ using UnityEngine;
 public class CatMovement : CharacterMovement
 {
     public Transform princessTransform;
-    public float followDistance = 1.5f; 
+    public float followDistance = 3.0f; 
 
     // Update is called once per frame
     protected override void Update()
@@ -41,6 +41,18 @@ public class CatMovement : CharacterMovement
             movement = Vector2.zero;
         }
 
-        base.FixedUpdate();
-    }
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+
+        }
+
+		animator.SetFloat("SpeedParam", Mathf.Abs(movement.x));
+		if (movement.x != 0)
+		{
+			transform.localScale = new Vector3(Mathf.Sign(movement.x) * Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+		}
+
+		//base.FixedUpdate();
+	}
 }

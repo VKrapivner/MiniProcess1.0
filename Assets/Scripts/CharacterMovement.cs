@@ -6,19 +6,22 @@ public class CharacterMovement : MonoBehaviour
 {
 	public Animator animator;
 	public float moveSpeed = 1.0f;
-	protected Rigidbody2D rb;
+	[SerializeField] protected Rigidbody2D rb;
 	protected Vector2 movement;
 	protected bool isGrounded = true;
-	private Vector3 originalScale;
+	protected Vector3 originalScale;
 
 	// Start is called before the first frame update
 	protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
 
 		if (rb == null)
 		{
 			Debug.LogError("Rigidbody2D component not found on " + gameObject.name);
+		}
+		else
+		{
+			Debug.Log("Rigidbody2D successfully assigned for " + gameObject.name);
 		}
 
 		originalScale = transform.localScale;
@@ -31,16 +34,28 @@ public class CharacterMovement : MonoBehaviour
 		Move(); 
     }
 
-	protected void FixedUpdate()
+	protected virtual void FixedUpdate()
 	{
-		if (rb != null)
-		{
-			rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
-		}
-		else
-		{
-			Debug.LogError("Rigidbody2D is null in FixedUpdate for " + gameObject.name);
-		}
+		//if (rb != null && movement.x != 0)
+		//{
+		//	rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+		//}
+		//else
+		//{
+		//	rb.velocity = new Vector2(0, rb.velocity.y);
+		//	Debug.LogError("Rigidbody2D is null in FixedUpdate for " + gameObject.name);
+		//}
+
+		rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+		
+		//if (movement.x != 0)
+		//{
+		//	rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
+		//}
+		//else
+		//{
+		//	rb.velocity = new Vector2(0, rb.velocity.y);
+		//}
 	}
 
 	protected void Move()
