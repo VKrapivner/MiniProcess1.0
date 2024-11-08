@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &14314331
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,7 +2398,7 @@ GameObject:
   - component: {fileID: 1068934991}
   - component: {fileID: 1068934990}
   - component: {fileID: 1068934989}
-  - component: {fileID: 1068934988}
+  - component: {fileID: 1068934994}
   - component: {fileID: 1068934993}
   - component: {fileID: 1068934992}
   m_Layer: 0
@@ -2408,23 +2408,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1068934988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068934987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b19f3b23d75a41478f8abba74e29361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1068934989}
-  moveSpeed: 1
-  jumpForce: 5
-  horizontalInput: Horizontal
-  jumpKey: 32
 --- !u!95 &1068934989
 Animator:
   serializedVersion: 5
@@ -2587,6 +2570,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1068934994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068934987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0426abb5c7c633848ae80fd46ada8bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1068934989}
+  moveSpeed: 1
+  jumpForce: 5
+  jumpKey: 32
 --- !u!1 &1092574219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,7 +2605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1092574220
 Transform:
   m_ObjectHideFlags: 0
@@ -2777,7 +2776,7 @@ GameObject:
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1140662628
 Transform:
   m_ObjectHideFlags: 0
@@ -3012,7 +3011,7 @@ GameObject:
   - component: {fileID: 1209488317}
   - component: {fileID: 1209488316}
   - component: {fileID: 1209488315}
-  - component: {fileID: 1209488314}
+  - component: {fileID: 1209488320}
   - component: {fileID: 1209488318}
   - component: {fileID: 1209488319}
   m_Layer: 0
@@ -3022,23 +3021,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1209488314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209488313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b19f3b23d75a41478f8abba74e29361, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1209488315}
-  moveSpeed: 1
-  jumpForce: 5
-  horizontalInput: Horizontal
-  jumpKey: 32
 --- !u!95 &1209488315
 Animator:
   serializedVersion: 5
@@ -3199,6 +3181,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1727998, y: 0.63435495}
   m_EdgeRadius: 0
+--- !u!114 &1209488320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209488313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e04721fcf39eae448c506782a58b760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1209488315}
+  moveSpeed: 1
+  princessTransform: {fileID: 1068934991}
+  followDistance: 1.5
 --- !u!1 &1210416603
 GameObject:
   m_ObjectHideFlags: 0
