@@ -73,14 +73,31 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetBool("isGrounded", true);
 			animator.SetBool("isJumping", false);
 		}
+		else if (collision.collider.CompareTag("MovingPlatform"))
+		{
+			isGrounded = true;
+			animator.SetBool("isGrounded", true);
+			animator.SetBool("isJumping", false);
+
+			if (collision.collider.gameObject.activeInHierarchy)
+			{
+				transform.SetParent(collision.collider.transform); //attach to the platform
+
+			}
+		}
 	}
 
 	private void OnCollisionExit2D(Collision2D collision)
 	{
-		if (collision.collider.CompareTag("Ground"))
+		if (collision.collider.CompareTag("Ground") || collision.collider.CompareTag("MovingPlatform"))
 		{
 			isGrounded = false;
 			animator.SetBool("isGrounded", false);
+			if (transform.parent != null && transform.parent.gameObject.activeInHierarchy)
+			{
+				transform.SetParent(null);//ska man använda null här
+
+			}
 		}
 	}
 

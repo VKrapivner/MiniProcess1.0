@@ -4,52 +4,40 @@ using UnityEngine;
 
 public class movingPlatform : MonoBehaviour
 {
-    [SerializeField] Transform pointA;
-    [SerializeField] Transform pointB;
-    [SerializeField] Transform platform;
-    [SerializeField] float moveTime = 2.0f;
-    float timer = 0.0f;
-    float moveDir = 1.0f; // -1.0f
+	public Transform[] points; // Points the platform will move between
+	public float moveSpeed = 2f;
+	private int targetIndex = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private void Update()
+	{
+		if (points.Length == 0) return;
 
-    // Update is called once per frame
-    void Update()
-    {
-        timer += Time.deltaTime * moveDir;
-        if (moveDir == 1.0f && timer >= moveTime)
-        {
-            moveDir = -1.0f;
-        }
-        if (moveDir == -1.0f && timer <= 0.0f)
-        {
-            moveDir = 1.0f;
-        }
+		// Move platform towards the target point
+		transform.position = Vector2.MoveTowards(transform.position, points[targetIndex].position, moveSpeed * Time.deltaTime);
 
-        transform.position = Vector2.Lerp(pointA.position, pointB.position, timer / moveTime);
-    }
+		// Check if the platform has reached the target point
+		if (Vector2.Distance(transform.position, points[targetIndex].position) < 0.1f)
+		{
+			targetIndex = (targetIndex + 1) % points.Length; // Move to the next point
+		}
+	}
 
+	private void OnCollisionEnter2D(Collision2D collision)
+	{
+		if (collision.collider.CompareTag("Player"))
+		{
+			// Make the player a child of the platform to move along with it
+			collision.collider.transform.SetParent(transform);
+		}
+	}
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Sätta spelaren som barn till plattformen (valfritt)
-            other.transform.SetParent(transform);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Ta bort spelaren som barn
-            other.transform.SetParent(null);
-        }
-    }
+	private void OnCollisionExit2D(Collision2D collision)
+	{
+		if (collision.collider.CompareTag("Player"))
+		{
+			// Remove the player from being a child when they leave the platform
+			collision.collider.transform.SetParent(null);
+		}
+	}
 
 }
