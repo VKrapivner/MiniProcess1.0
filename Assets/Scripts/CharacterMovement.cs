@@ -36,26 +36,9 @@ public class CharacterMovement : MonoBehaviour
 
 	protected virtual void FixedUpdate()
 	{
-		//if (rb != null && movement.x != 0)
-		//{
-		//	rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
-		//}
-		//else
-		//{
-		//	rb.velocity = new Vector2(0, rb.velocity.y);
-		//	Debug.LogError("Rigidbody2D is null in FixedUpdate for " + gameObject.name);
-		//}
 
 		rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
 		
-		//if (movement.x != 0)
-		//{
-		//	rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
-		//}
-		//else
-		//{
-		//	rb.velocity = new Vector2(0, rb.velocity.y);
-		//}
 	}
 
 	protected void Move()
