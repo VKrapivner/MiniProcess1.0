@@ -41,6 +41,7 @@ public class CatMovement : CharacterMovement
             movement = Vector2.zero;
         }
 
+
         if (rb != null)
         {
             rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
