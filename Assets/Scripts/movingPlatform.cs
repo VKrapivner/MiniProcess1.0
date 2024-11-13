@@ -36,7 +36,8 @@ public class movingPlatform : MonoBehaviour
 		if (collision.collider.CompareTag("Player"))
 		{
 			// Remove the player from being a child when they leave the platform
-			collision.collider.transform.SetParent(null);
+			//collision.collider.transform.SetParent(null);
+			collision.transform.parent = null;
 		}
 	}
 
