@@ -8,6 +8,14 @@ public class movingPlatform : MonoBehaviour
 	public float moveSpeed = 2f;
 	private int targetIndex = 0;
 
+	private void Start()
+	{
+		if (points.Length > 0)
+		{
+			transform.position = points[0].position; // Start the platform at the first point
+		}
+	}
+
 	private void Update()
 	{
 		if (points.Length == 0) return;
@@ -22,6 +30,7 @@ public class movingPlatform : MonoBehaviour
 		}
 	}
 
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.collider.CompareTag("Player"))
@@ -29,15 +38,26 @@ public class movingPlatform : MonoBehaviour
 			// Make the player a child of the platform to move along with it
 			collision.collider.transform.SetParent(transform);
 		}
+
+		if (collision.collider.CompareTag("Torch"))
+		{
+			collision.collider.transform.SetParent(transform);
+		}
+
 	}
 
 	private void OnCollisionExit2D(Collision2D collision)
 	{
-		if (collision.collider.CompareTag("Player"))
+
+		if (collision.collider.CompareTag("Player") && collision.collider.transform.parent == transform)
 		{
 			// Remove the player from being a child when they leave the platform
-			//collision.collider.transform.SetParent(null);
-			collision.transform.parent = null;
+			collision.collider.transform.SetParent(null);
+		}
+
+		if (collision.collider.CompareTag("Torch") && collision.collider.transform.parent == transform)
+		{
+			collision.collider.transform.SetParent(null);
 		}
 	}
 

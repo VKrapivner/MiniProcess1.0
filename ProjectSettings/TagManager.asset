@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - NPC
   - MovingPlatform
+  - Platform
+  - Torch
   layers:
   - Default
   - TransparentFX

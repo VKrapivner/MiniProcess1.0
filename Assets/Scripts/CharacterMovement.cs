@@ -23,13 +23,18 @@ public class CharacterMovement : MonoBehaviour
 		{
 			Debug.Log("Rigidbody2D successfully assigned for " + gameObject.name);
 		}
+		Debug.Log("Character initial position: " + transform.position);
+		Debug.Log("Initial movement: " + movement);
+		transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 		originalScale = transform.localScale;
-		
+		movement = Vector2.zero;
+
+
 	}
 
-    // Update is called once per frame
-    protected virtual void Update()
+	// Update is called once per frame
+	protected virtual void Update()
     {
 		Move(); 
     }
@@ -38,8 +43,9 @@ public class CharacterMovement : MonoBehaviour
 	{
 
 		rb.velocity = new Vector2(movement.x * moveSpeed, rb.velocity.y);
-		
+
 	}
+
 
 	protected void Move()
 	{
