@@ -62,7 +62,7 @@ public class ObjectInteraction : MonoBehaviour
 		}
 	}
 
-	private void OnSpeechBubbleClick()
+	public void OnSpeechBubbleClick()
 	{
 		// Increment to the next text
 		currentTextIndex++;

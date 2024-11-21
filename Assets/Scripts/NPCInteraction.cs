@@ -38,6 +38,8 @@ public class NPCInteraction : MonoBehaviour
 
 	private void OnSpeechBubbleClick()
 	{
+		Debug.Log("Button clicked!");
+
 		// Increment to the next text
 		currentTextIndex++;
 

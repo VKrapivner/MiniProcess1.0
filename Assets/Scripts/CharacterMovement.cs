@@ -37,6 +37,7 @@ public class CharacterMovement : MonoBehaviour
 	protected virtual void Update()
     {
 		Move(); 
+		animator.SetBool("isGrounded", isGrounded);
     }
 
 	protected virtual void FixedUpdate()

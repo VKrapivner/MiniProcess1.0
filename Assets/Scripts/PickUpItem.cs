@@ -6,8 +6,9 @@ public class PickUpItem : MonoBehaviour
 {
 
     public string itemName;
+	public Sprite objectToPickup;
 
-    private bool isPlayerInRange = false;
+	private bool isPlayerInRange = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +44,22 @@ public class PickUpItem : MonoBehaviour
 		}
 	}
 
-	private void PickUp()
+    private void PickUp()
     {
-        Inventory.Instance.AddItem(itemName);
-        Destroy(gameObject);//Remove object from the scene
-    }
+		//Inventory.Instance.AddItem(itemName, objectToPickup);
+		//Destroy(gameObject);//Remove object from the scene
+		if (Inventory.Instance != null)
+		{
+			Inventory.Instance.AddItem(itemName, objectToPickup);
+			Debug.Log("Picked up item: " + itemName);
+			Destroy(gameObject); // Remove object from the scene
+		}
+		else
+		{
+			Debug.LogError("Inventory instance is null!");
+		}
+	}
+
 
     private void ShowSpeechBubble(bool show)
     {

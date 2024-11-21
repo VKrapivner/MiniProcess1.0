@@ -55,10 +55,10 @@ public class movingPlatform : MonoBehaviour
 			collision.collider.transform.SetParent(null);
 		}
 
-		if (collision.collider.CompareTag("Torch") && collision.collider.transform.parent == transform)
-		{
-			collision.collider.transform.SetParent(null);
-		}
+		//if (collision.collider.CompareTag("Torch") && collision.collider.transform.parent == transform)
+		//{
+		//	collision.collider.transform.SetParent(null);
+		//}
 	}
 
 }
