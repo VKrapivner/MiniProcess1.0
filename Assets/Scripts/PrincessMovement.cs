@@ -34,17 +34,13 @@ public class PrincessMovement : CharacterMovement
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		//if (collision.collider.CompareTag("Ground"))
-		//{
-		//	StartCoroutine(ResetGrounded());
-		//}
 
 		if(collision.collider.CompareTag("Ground"))
 		{
 			isGrounded = true;
 			animator.SetBool("isJumping", false);
 
-			Debug.Log("Princess landed, isGrounded: " + isGrounded);
+			//Debug.Log("Princess landed, isGrounded: " + isGrounded);
 		}
 	}
 

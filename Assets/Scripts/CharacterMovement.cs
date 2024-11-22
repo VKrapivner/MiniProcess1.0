@@ -17,14 +17,14 @@ public class CharacterMovement : MonoBehaviour
 
 		if (rb == null)
 		{
-			Debug.LogError("Rigidbody2D component not found on " + gameObject.name);
+			//Debug.LogError("Rigidbody2D component not found on " + gameObject.name);
 		}
 		else
 		{
-			Debug.Log("Rigidbody2D successfully assigned for " + gameObject.name);
+			//Debug.Log("Rigidbody2D successfully assigned for " + gameObject.name);
 		}
-		Debug.Log("Character initial position: " + transform.position);
-		Debug.Log("Initial movement: " + movement);
+		//Debug.Log("Character initial position: " + transform.position);
+		//Debug.Log("Initial movement: " + movement);
 		transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 		originalScale = transform.localScale;

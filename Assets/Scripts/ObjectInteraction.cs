@@ -33,7 +33,7 @@ public class ObjectInteraction : MonoBehaviour
 	{
 		if (collision.CompareTag("Player"))
 		{
-			Debug.Log("Interaction triggered with: " + gameObject.name);
+			//Debug.Log("Interaction triggered with: " + gameObject.name);
 
 			currentTextIndex = 0;
 
@@ -45,10 +45,10 @@ public class ObjectInteraction : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Debug.Log("Enters OnCollision");
+		//Debug.Log("Enters OnCollision");
 		if (collision.gameObject.CompareTag("Player"))
 		{
-			Debug.Log("Collision detected with NPC");
+			//Debug.Log("Collision detected with NPC");
 			DisplaySpeechBubble();
 		}
 	}
@@ -75,13 +75,13 @@ public class ObjectInteraction : MonoBehaviour
 		else
 		{
 			// Optionally, hide the bubble if no more texts to display
-			speechBubble.SetActive(false);
+			//speechBubble.SetActive(false);
 		}
 	}
 
 	private void DisplaySpeechBubble()
 	{
-		Debug.Log("Interaction triggered with: " + gameObject.name);
+		//Debug.Log("Interaction triggered with: " + gameObject.name);
 
 		currentTextIndex = 0;
 		speechText.text = interactionTexts[currentTextIndex];
