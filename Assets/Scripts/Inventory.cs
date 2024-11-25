@@ -47,8 +47,13 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Update in Inventory acceced");
         if (Input.GetKeyDown(KeyCode.I))
-            ToggleInventory();
+        {
+            Debug.Log("Pressed I");
+			ToggleInventory();
+		}
+           
     }
 
 

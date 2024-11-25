@@ -1,26 +1,27 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrincessMovement : CharacterMovement
+public class TestMovementScript : CharacterMovement
 {
 	public float jumpForce = 5.0f;
 	public KeyCode jumpKey = KeyCode.Space;
 
+	[SerializeField] private LayerMask groundLayer;
 
-	// Update is called once per frame
+	//public static event Action OnPrincessJump; //event för princessans hopp
 	protected override void Update()
-    {
-        base.Update();
+	{
+		base.Update();
 
-        if (Input.GetKeyDown(jumpKey) && isGrounded)
-        {
-            Jump();
-        }
 
-        animator.SetBool("isJumping", !isGrounded);
-    }
+		if (Input.GetKeyDown(jumpKey) && isGrounded)
+		{
+			Jump();
+		}
+
+		animator.SetBool("isJumping", !isGrounded);
+	}
 
 	private void Jump()
 	{
@@ -31,10 +32,19 @@ public class PrincessMovement : CharacterMovement
 		//OnPrincessJump?.Invoke();
 	}
 
+	//private void OnCollisionEnter2D(Collision2D collision)
+	//{
+
+	//	if (collision.collider.CompareTag("Ground"))
+	//	{
+	//		StopAllCoroutines(); // Stop any existing ResetGrounded coroutine
+	//		StartCoroutine(ResetGrounded());
+	//	}
+	//}
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-
-		if (collision.collider.CompareTag("Ground"))
+		if ((groundLayer.value & (1 << collision.collider.gameObject.layer)) > 0)
 		{
 			isGrounded = true;
 			animator.SetBool("isJumping", false);
@@ -45,9 +55,10 @@ public class PrincessMovement : CharacterMovement
 
 	private IEnumerator ResetGrounded()
 	{
-		yield return new WaitForFixedUpdate();//small delay
+		yield return null;
 		isGrounded = true;
-
 		animator.SetBool("isJumping", false);
+
+		Debug.Log("Princess landed, isGrounded: " + isGrounded);
 	}
 }
