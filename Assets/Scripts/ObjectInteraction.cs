@@ -18,10 +18,16 @@ public class ObjectInteraction : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-        speechBubble.SetActive(false); //Hides initially
+		speechBubble.SetActive(false); //Hides initially
 
 		speechBubbleButton.onClick.AddListener(OnSpeechBubbleClick);
-    }
+
+		//if (speechBubbleButton != null)
+		//{
+		//	speechBubbleButton.onClick.RemoveAllListeners();
+		//	speechBubbleButton.onClick.AddListener(OnSpeechBubbleClick);
+		//}
+	}
 
     // Update is called once per frame
     void Update()
@@ -45,15 +51,12 @@ public class ObjectInteraction : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		//Debug.Log("Enters OnCollision");
 		if (collision.gameObject.CompareTag("Player"))
 		{
-			//Debug.Log("Collision detected with NPC");
 			DisplaySpeechBubble();
 		}
 	}
 
-	// Trigger when the player leaves the interaction zone
 	private void OnTriggerExit2D(Collider2D collision)
 	{
 		if (collision.CompareTag("Player"))
@@ -64,24 +67,27 @@ public class ObjectInteraction : MonoBehaviour
 
 	public void OnSpeechBubbleClick()
 	{
-		// Increment to the next text
+		Debug.Log($"Arrow clicked. Current Index: {currentTextIndex}");
+
 		currentTextIndex++;
 
 		// Check if there are more texts to show
 		if (currentTextIndex < interactionTexts.Length)
 		{
 			speechText.text = interactionTexts[currentTextIndex]; // Update the speech text
+			Debug.Log($"Updated text to: {speechText.text}");
+
 		}
 		else
 		{
-			// Optionally, hide the bubble if no more texts to display
-			//speechBubble.SetActive(false);
+			Debug.Log("No more text to display.");
+		
 		}
 	}
 
 	private void DisplaySpeechBubble()
 	{
-		//Debug.Log("Interaction triggered with: " + gameObject.name);
+		Debug.Log($"Displaying speech bubble for: {gameObject.name}");
 
 		currentTextIndex = 0;
 		speechText.text = interactionTexts[currentTextIndex];

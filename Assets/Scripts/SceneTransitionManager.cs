@@ -13,6 +13,7 @@ public class SceneTransitionManager : MonoBehaviour
 
     public void LoadNextScene()
     {
+		Debug.Log("LoadNextScene called.");
 		StartCoroutine(LoadSceneCoroutine());
 
 	}
@@ -23,25 +24,9 @@ public class SceneTransitionManager : MonoBehaviour
 
         yield return new WaitForSeconds(loadingScreenDuration);
 
-        //if (fadeAnimator != null)//play fade animation
-        //{
-        //    fadeAnimator.SetTrigger("FadeOut");
-        //    yield return new WaitForSeconds(1.0f);
-        //}
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(nextScene);
         asyncLoad.allowSceneActivation = false;
-
-        //while (!asyncLoad.isDone)
-        //{
-
-        //    if(asyncLoad.progress >= 0.9f)
-        //    {
-        //        asyncLoad.allowSceneActivation = true;
-        //    }
-
-        //    yield return null; 
-        //}
 
         while(asyncLoad.progress < 0.9f)
         {

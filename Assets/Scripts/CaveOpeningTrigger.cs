@@ -21,6 +21,11 @@ public class CaveOpeningTrigger : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D other)
 	{
         if (other.CompareTag("Player"))
-            sceneTransitionManager.LoadNextScene();
+        {
+			Debug.Log("Player entered the cave trigger.");
+			sceneTransitionManager.LoadNextScene();
+		}
+
 	}
+		
 }

@@ -9,6 +9,8 @@ public class CatMovement : CharacterMovement
 	public float jumpForce = 5.0f; // Add a jump force for the cat
 	private bool isCatGrounded = true; // Separate grounded check for the cat
 
+	[SerializeField] private LayerMask platformLayer;
+	[SerializeField] private LayerMask groundLayer;
 	protected override void Update()
 	{
 		if (princessTransform != null)
@@ -76,7 +78,21 @@ public class CatMovement : CharacterMovement
 		{
 			StartCoroutine(ResetGrounded());
 		}
+
 	}
+
+	//private void OnCollisionEnter2D(Collision2D collision)
+	//{
+	//	if ((platformLayer.value & (1 << collision.collider.gameObject.layer)) > 0 && isCatGrounded)
+	//	{
+	//		Jump();
+	//	}
+
+	//	if ((groundLayer.value & (1 << collision.collider.gameObject.layer)) > 0)
+	//	{
+	//		StartCoroutine(ResetGrounded());
+	//	}
+	//}
 
 	private IEnumerator ResetGrounded()
 	{
